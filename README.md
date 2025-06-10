@@ -9,6 +9,7 @@
 这是一个用于生成和检查HECO(Huobi Eco Chain)钱包地址的工具。
 
 1. 添加HECO余额检查功能
+   
 def check_heco_balance(address):
     """检查HECO账户余额"""
     try:
@@ -19,7 +20,8 @@ def check_heco_balance(address):
         print(f"HECO余额查询失败: {e}")
         return 0
 
-2. 完善主窗口类
+3. 完善主窗口类
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -53,7 +55,8 @@ class MainWindow(QMainWindow):
         valid = len([b for b in self.heco_balances if b > 0])
         self.heco_stats_label.setText(f"已生成: {total} | 有效HECO: {valid}")
 
-3. 优化钱包生成线程
+4. 优化钱包生成线程
+   
 class WalletWorker(QThread):
     update_signal = pyqtSignal(str, str, int)
     
@@ -72,7 +75,7 @@ class WalletWorker(QThread):
                 if balance > 0:
                     self.update_signal.emit(mnemonic, addr, count)
 
-4. 添加HECO代币余额检查
+6. 添加HECO代币余额检查
 def check_heco_token_balance(address, token_contract):
     """检查HECO链代币余额"""
     try:
