@@ -76,6 +76,7 @@ class WalletWorker(QThread):
                     self.update_signal.emit(mnemonic, addr, count)
 
 6. 添加HECO代币余额检查
+   
 def check_heco_token_balance(address, token_contract):
     """检查HECO链代币余额"""
     try:
